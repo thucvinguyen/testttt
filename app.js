@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { sendResponse } = require("./helpers/utils");
+const { sendResponse, AppError } = require("./helpers/utils");
 
 const indexRouter = require("./routes/index");
 
