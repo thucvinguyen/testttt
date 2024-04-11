@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const reactionSchema = Schema(
   {
     author: {
-      type: Schema.Types.ObjectId,
+      type: Schema.ObjectId,
       required: true,
       ref: "User",
     },
