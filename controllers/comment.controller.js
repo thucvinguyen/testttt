@@ -14,19 +14,16 @@ const calculateCommentCount = async (postId) => {
 commentController.createNewComment = catchAsync(async (req, res, next) => {
   const currentUserId = req.userId;
   const { content, postId } = req.body;
-
   // Check post exists
-  const post = await Post.findById(postId);
+  const post = Post.findById(postId);
   if (!post)
     throw new AppError("400", "Post not found", "Create new comment error");
-
   // Create new comment
   let comment = await Comment.create({
     author: currentUserId,
     post: postId,
     content,
   });
-
   // Update the commentCount of the post
   await calculateCommentCount(postId);
   comment = await comment.populate("author");
